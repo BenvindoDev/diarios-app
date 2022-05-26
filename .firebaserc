@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "wedding-diary-fbb8b": {
+      "hosting": {
+        "diarios-app": [
+          "wedding-diary-fbb8b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "wedding-diary-fbb8b"
+  }
+}
