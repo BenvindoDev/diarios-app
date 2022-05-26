@@ -1,15 +1,17 @@
 <mat-toolbar color="warn">
     <span>Wedding</span>
     <span class="spacer"></span>
-    <div class="link-area">
-        <a mat-button>Wedding</a>
-        <button mat-icon-button>
-            <mat-icon>logout</mat-icon>
+    <div *ngIf="logged$ | async; else unlogged" class="link-area">
+        <a mat-button routerLink="/wedding">Wedding</a>
+        <button mat-icon-button (click)="logout()">
+            <mat-icon>Logout</mat-icon>
         </button>
     </div>
-    <div class="link-area">
-        <a mat-button>Login</a>
-        <a mat-button>Cadastro</a>
-    </div>
+    <ng-template #unlogged>
+        <div class="link-area">
+            <a mat-button routerLink="/login" >Login</a>
+            <a mat-button routerLink="/cadastro">Cadastro</a>
+        </div>
+    </ng-template>
 </mat-toolbar>
 

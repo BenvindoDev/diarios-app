@@ -6,6 +6,9 @@ import { LoginComponent } from './components/login/login.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { UsuarioNaoVerificadoComponent } from './components/usuario-nao-verificado/usuario-nao-verificado.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../shared/material.module';
+
 
 
 @NgModule({
@@ -13,11 +16,14 @@ import { UsuarioNaoVerificadoComponent } from './components/usuario-nao-verifica
     LoginComponent,
     CadastroComponent,
     RecuperarSenhaComponent,
-    UsuarioNaoVerificadoComponent
+    UsuarioNaoVerificadoComponent,
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    FormsModule,
   ]
 })
 export class AuthModule { }
