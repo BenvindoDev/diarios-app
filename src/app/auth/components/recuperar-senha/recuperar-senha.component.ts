@@ -18,14 +18,14 @@ export class RecuperarSenhaComponent implements OnInit {
   onSubmit() {
     this.authService
     .recoverPassword(this.email)
-   .pipe(
-     this.toast.observe({
-      success: 'Email enviado!',
-       error: 'Um erro aconteceu :(',
-       loading: 'Carregando...',
-     })
-    )
-    .subscribe();
+    .pipe(
+      this.toast.observe({
+        success: 'Email enviado!',
+        error: 'Um erro aconteceu :(',
+        loading: 'Carregando...',
+      })
+     )
+     .subscribe();
   }
 
   ngOnInit(): void {}

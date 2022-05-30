@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Auth, authState } from '@angular/fire/auth';
-import { Firestore, setDoc} from '@angular/fire/firestore';
+import { doc, Firestore,} from '@angular/fire/firestore';
 import { Router} from '@angular/router';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, updateEmail, updateProfile } from '@firebase/auth';
-import { collection, doc, updateDoc } from '@firebase/firestore';
+import { collection, setDoc } from '@firebase/firestore';
 import { from, tap } from 'rxjs';
 // Firebase versão  modular
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthService {
   constructor(
     private auth: Auth, // Serviços do firebase authentication
     private db: Firestore, // serviços do banco firestore do firebase
-    private router: Router, // mudar de rota de forma imperativa
+    private router: Router // mudar de rota de forma imperativa
   ) {}
 
   uid?: string; // guarda o ID único do usuário logado
@@ -28,7 +28,7 @@ export class AuthService {
     );
   }
 
-  usuarios = collection(this.db, 'usuários'); // referencia uma possível coleção no firestore
+  usuarios = collection(this.db, 'usuarios'); // referencia uma possível coleção no firestore
 
   signupEmail(email: string, password: string, nome: string, nick: string) {
     // Se comunica com o auth e cria um usuário a partir do email e senha
@@ -42,8 +42,10 @@ export class AuthService {
       setDoc(userDoc, {
         uid: user.uid, 
         email: email, 
-        nome: nome, nick: nick,});
-        this.emailVerificacao(creds.user);
+        nome: nome, 
+        nick: nick
+      });
+      this.emailVerificacao(creds.user);
       })
     );
   }
